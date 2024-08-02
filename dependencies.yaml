@@ -1,0 +1,12 @@
+# Ideally should be IDF components that have a CMakeLists which include a idf_component_register
+# Cloned into components/ when building
+# If the cloned repo doesn't have a CMakeLists.txt, one is generated using the located .cpp, .c, .h, .hpp files
+# See bin/install-deps.sh for the actual script that does this
+repositories:
+  arduino:
+    type: git
+    url: https://github.com/espressif/arduino-esp32
+    version: 3.0.4
+  OneWire:
+    type: git
+    url: https://github.com/PaulStoffregen/OneWire
