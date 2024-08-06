@@ -45,6 +45,7 @@ target_compile_options(${COMPONENT_LIB} PUBLIC "$<$<COMPILE_LANGUAGE:Swift>:SHEL
         -target riscv32-none-none-eabi
         -Xfrontend -function-sections -enable-experimental-feature Embedded -wmo -parse-as-library -Osize
         -Xcc -march=${march_flag} -Xcc -mabi=${mabi_flag}
+	-Xcc -DARDUINO=10812
         
         -pch-output-dir /tmp
         -Xfrontend -enable-single-module-llvm-emission
