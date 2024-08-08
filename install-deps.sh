@@ -6,6 +6,16 @@ mkdir -p components
 IDF_DEPS="dependencies.yaml"
 CMAKELISTS="CMakeLists.txt"
 
+if ! command -v vcs &> /dev/null; then
+    echo "'vcs' command not found. Installing python3-vcstool"
+    if [[ "$(uname -s)" =~ "Linux" ]]; then
+        sudo apt install python3-vcstool
+    else
+	# Probably on macos otherwise Brew won't exist
+	brew install python3-vcstool
+    fi
+fi
+
 download() {
     vcs import --recursive --input "$1" "$2"
     vcs pull "$2"
