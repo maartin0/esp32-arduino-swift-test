@@ -17,4 +17,4 @@
 #include "sdkconfig.h"
 
 #include <Arduino.h>
-#include <OneWire.h>
+#include <Wire.h>

@@ -3,9 +3,8 @@ idf_component_register(
     SRCS /dev/null # We don't have any C++ sources
     PRIV_INCLUDE_DIRS "."
     LDFRAGMENTS "linker.lf"
-    REQUIRES arduino OneWire
+    REQUIRES arduino
 )
-target_compile_options(${COMPONENT_LIB} PRIVATE -std=gnu++11)
 
 idf_build_get_property(target IDF_TARGET)
 idf_build_get_property(arch IDF_TARGET_ARCH)
@@ -44,7 +43,7 @@ endforeach()
 target_compile_options(${COMPONENT_LIB} PUBLIC "$<$<COMPILE_LANGUAGE:Swift>:SHELL:
         -target riscv32-none-none-eabi
         -Xfrontend -function-sections -enable-experimental-feature Embedded -wmo -parse-as-library -Osize
-        -Xcc -march=${march_flag} -Xcc -mabi=${mabi_flag}
+        -Xcc -march=${march_flag} -Xcc -mabi=${mabi_flag} -Xcc -std=c++20
 	-Xcc -DARDUINO=10812
         
         -pch-output-dir /tmp
@@ -53,7 +52,6 @@ target_compile_options(${COMPONENT_LIB} PUBLIC "$<$<COMPILE_LANGUAGE:Swift>:SHEL
         ${SWIFT_INCLUDES}
 
         -import-bridging-header ${CMAKE_CURRENT_LIST_DIR}/BridgingHeader.h
-        -cxx-interoperability-mode=default
     >")
 
 # Enable Swift support in CMake, force Whole Module builds (required by Embedded Swift), and use "CMAKE_Swift_COMPILER_WORKS" to
