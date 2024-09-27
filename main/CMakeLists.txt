@@ -43,11 +43,10 @@ endforeach()
 target_compile_options(${COMPONENT_LIB} PUBLIC "$<$<COMPILE_LANGUAGE:Swift>:SHELL:
         -target riscv32-none-none-eabi
         -cxx-interoperability-mode=default
-        -emit-clang-header-path SwiftModule-Swift.h
         -Xfrontend -function-sections -enable-experimental-feature Embedded -wmo -parse-as-library -Osize
-        -Xcc -march=${march_flag} -Xcc -mabi=${mabi_flag} -Xcc -std=gnu++17
-	    -Xcc -DARDUINO=10812
-        
+        -Xcc -march=${march_flag} -Xcc -mabi=${mabi_flag} -Xcc -std=gnu++17 -Xcc -fno-exceptions -Xcc -fno-rtti
+	-Xcc -DARDUINO=10812
+
         -pch-output-dir /tmp
         -Xfrontend -enable-single-module-llvm-emission
         

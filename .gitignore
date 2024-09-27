@@ -9,6 +9,7 @@ sdkconfig.old
 esp-idf
 dependencies.lock
 managed_components/
+components/
 
 # Misc
 /old/
