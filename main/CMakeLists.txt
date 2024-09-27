@@ -45,7 +45,7 @@ target_compile_options(${COMPONENT_LIB} PUBLIC "$<$<COMPILE_LANGUAGE:Swift>:SHEL
         -cxx-interoperability-mode=default
         -Xfrontend -function-sections -enable-experimental-feature Embedded -wmo -parse-as-library -Osize
         -Xcc -march=${march_flag} -Xcc -mabi=${mabi_flag} -Xcc -std=gnu++17 -Xcc -fno-exceptions -Xcc -fno-rtti
-	-Xcc -DARDUINO=10812
+	-Xcc -DIDF_VER=\"v5.1.4\" -Xcc -DMBEDTLS_CONFIG_FILE=\"mbedtls/esp_config.h\" -Xcc -DSOC_MMU_PAGE_SIZE=CONFIG_MMU_PAGE_SIZE -Xcc -DARDUINO=10812 -Xcc -DARDUINO_BOARD=\"ESP32C3_DEV\" -Xcc -DARDUINO_VARIANT=\"esp32c3\" -Xcc -DESP32=ESP32
 
         -pch-output-dir /tmp
         -Xfrontend -enable-single-module-llvm-emission
@@ -67,5 +67,4 @@ enable_language(Swift)
 target_sources(${COMPONENT_LIB}
     PRIVATE
     Main.swift
-    Led.swift
 )

@@ -14,13 +14,7 @@
 func app_main() {
     print("Hello from Swift on ESP32-C6!")
 
-    var ledValue: Bool = false
-    let blinkDelayMs: UInt32 = 500
-    let led = Led(gpioPin: 8)
-
-    while true {
-        led.setLed(value: ledValue)
-        ledValue.toggle() // Toggle the boolean value
-        delay(blinkDelayMs)
-    }
+    let numSsid = WiFi.scanNetworks()
+    print("Number of networks discovered: ")
+    print(numSsid)
 }

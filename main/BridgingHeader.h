@@ -17,4 +17,6 @@
 #include "sdkconfig.h"
 
 #include <Arduino.h>
+#include <WiFi.h>
+#include <WiFiScan.h>
 #include <Wire.h>
